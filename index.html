@@ -1,0 +1,39 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todo</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <h1 style="text-align: center;">My Todo List</h1>
+
+        <div class="todo">
+            <form class="form" >
+                <label for="todo">Enter Title:</label><br>
+                <input type="text" id="todo" name="todo"><br><br>
+                <label for="des">Enter Description:</label><br>
+                <input type="text" id="des" name="des"><br><br>
+                <label for="date">Enter Date:</label><br>
+                <input type="date" id="date" name="date"><br><br>
+                <div>
+                    <button  class="submit" type="submit">Submit</button>
+                </div>
+                
+                <!-- <input class="submit" type="submit" value="Submit"> -->
+            </form>
+            <br>
+
+            <h1 class="notodos">You have no todos at the moment</h1>
+            <button style="display: none" class="clearbut" >CLear All</button>
+            <div class="list">
+               
+            </div>
+        </div>
+
+
+        <script src="./Prompt.js"></script>
+        <script src="./todo.js"></script>
+    </body>
+</html>

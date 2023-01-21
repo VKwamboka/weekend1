@@ -1,0 +1,30 @@
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    border: 2px solid orchid;
+    margin: 20px;
+}
+.cardbody{
+    border: 2px solid orchid;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  gap: 10px;
+  width: 40%;
+  margin-left: 30vw;
+  padding: 10px;
+  border: 2px solid blueviolet;
+}
+.notodos{
+    text-align: center;
+}
+.clearbut{
+    margin-left: 47vw;
+    width: 100px;
+    padding: 10px;
+    background-color: orchid;
+}
