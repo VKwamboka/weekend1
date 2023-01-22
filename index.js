@@ -1,5 +1,6 @@
 let table = document.querySelector(".table");
 let submit = document.querySelector(".submit");
+let form = document.querySelector(".form");
 let cards = document.querySelector(".list");
 let notodos = document.querySelector(".notodos");
 let clearbut = document.querySelector(".clearbut");
@@ -13,7 +14,9 @@ function todoID() {
 }
 
 submit.addEventListener("click", (e) => {
-  e.preventDefault();
+    e.stopImmediatePropagation()
+ e.preventDefault
+
   const todo = {
     id: todoID(),
     title,
@@ -22,7 +25,7 @@ submit.addEventListener("click", (e) => {
   };
   todoArr.push(todo);
   displayCards();
-  submit.reset()
+  form.reset()
 });
     
 // displaying cards
