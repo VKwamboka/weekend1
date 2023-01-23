@@ -9,6 +9,7 @@ let toggle = document.querySelector(".toggle");
 let completed_tasks = document.querySelector("#completed_tasks");
 let incomplete_tasks = document.querySelector("#incomplete_tasks");
 let completed = document.querySelector(".completed");
+let incomplete = document.querySelector(".incomplete");
 let todoArr = [];
 let todo_id;
 let date_2 = new Date();
