@@ -23,6 +23,20 @@
                 
                 
             </form>
+
+            <div class="modal" style="visibility: hidden;">
+                <form id="modal">
+                    <label for="todo">Enter Title:</label><br>
+                    <input type="text" id="todo" name="todo" class="new-task-input" required><br><br>
+                    <label for="des">Enter Description:</label><br>
+                    <input type="text" id="des" name="des" class="new-task-input" required><br><br>
+                    <label for="date">Enter Date:</label><br>
+                    <input type="date" id="date" name="date" class="new-task-input" required><br><br>
+                    <div>
+                        <button  class="submit" type="submit" id="new-task-submit">Submit</button>
+                    </div>
+                </form>
+            </div>
             <br>
 
             <h1 class="notodos">You have no todos at the moment</h1>
@@ -33,7 +47,6 @@
         </div>
 
 
-        <script src="./Prompt.js"></script>
-        <script src="./todo.js"></script>
+        <script src="index.js"></script>
     </body>
 </html>

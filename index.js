@@ -4,18 +4,19 @@ let form = document.querySelector(".form");
 let cards = document.querySelector(".list");
 let notodos = document.querySelector(".notodos");
 let clearbut = document.querySelector(".clearbut");
-let title = document.querySelector("#todo").value;
-let des = document.querySelector("#des").value;
-let date = document.querySelector("#date").value;
 let todoArr = [];
 
 function todoID() {
   return Math.floor(Math.random() * 2000000);
 }
 
-submit.addEventListener("click", (e) => {
-    e.stopImmediatePropagation()
- e.preventDefault
+form.addEventListener("submit", (e) => {
+  // e.stopImmediatePropagation()
+  e.preventDefault()
+  let title = document.querySelector("#todo").value;
+  let des = document.querySelector("#des").value;
+  let date = document.querySelector("#date").value;
+  
 
   const todo = {
     id: todoID(),
@@ -37,7 +38,7 @@ function displayCards() {
 
     todoArr.forEach((todo) => {
       // Construct card content
-      const contentCard = `         
+      let contentCard = `         
                 <div class="card-body" style="border: 2px solid purple; margin: 20px; width:25%">                
                   <h1>TItle: ${todo.title}</h1>
                   <p><b>Description:</b> ${todo.des}</p>
