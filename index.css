@@ -28,3 +28,7 @@
     padding: 10px;
     background-color: orchid;
 }
+.toggle{
+    display: flex;
+    gap: 20%;
+}

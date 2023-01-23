@@ -4,77 +4,140 @@ let form = document.querySelector(".form");
 let cards = document.querySelector(".list");
 let notodos = document.querySelector(".notodos");
 let clearbut = document.querySelector(".clearbut");
-let todoArr = [];
+let modal = document.querySelector(".modal");
+let toggle = document.querySelector(".toggle");
+let completed_tasks = document.querySelector(".completed")
+let incomplete_tasks = document.querySelector(".incomplete_tasks")
 
+let todoArr = [];
+let todo_id;
 function todoID() {
   return Math.floor(Math.random() * 2000000);
 }
 
 form.addEventListener("submit", (e) => {
   // e.stopImmediatePropagation()
-  e.preventDefault()
+  e.preventDefault();
   let title = document.querySelector("#todo").value;
   let des = document.querySelector("#des").value;
   let date = document.querySelector("#date").value;
-  
 
   const todo = {
     id: todoID(),
     title,
     des,
-    date
-  };
+    date,
+    isComplete: false 
+   };
   todoArr.push(todo);
   displayCards();
-  form.reset()
+  form.reset();
 });
-    
+
 // displaying cards
 function displayCards() {
   if (todoArr.length > 0) {
     notodos.style.display = "none";
-    clearbut.style.display = "block"
+    clearbut.style.display = "block";
+    cards.style.display ='block'
+    toggle.style.display = 'block'
     cards.innerHTML = "";
 
     todoArr.forEach((todo) => {
       // Construct card content
       let contentCard = `         
                 <div class="card-body" style="border: 2px solid purple; margin: 20px; width:25%">                
-                  <h1>TItle: ${todo.title}</h1>
-                  <p><b>Description:</b> ${todo.des}</p>
-                  <p><b>Date:</b> ${todo.date}</p>
-                  <button class="delete" onclick="handleDeleteClick(${todo.id})">Delete</button>                  
+                  <h1 id="todoTitle">TItle: ${todo.title}</h1>
+                  <p id="todoDes"><b>Description:</b> ${todo.des}</p>
+                  <p id="todoDate"> <b>Date:</b> ${todo.date}</p>
+                  <button class="delete" id =${todo.id}>Delete</button> 
+                  <button class="update" onclick ="update(${todo.id})">Update</button>                  
+                  <button class="done" onclick = "complete(${todo.id})">done</button>                  
+
                 </div>       
             `;
 
       // Append newyly created card element to the container
       cards.innerHTML += contentCard;
 
-// delete a todo
+      // delete a todo
       let current_todos = document.querySelectorAll(".delete");
-      for(let i=0; i<current_todos.length; i++){
-          current_todos[i].onclick = function(){
-              this.parentNode.remove();
-          }
+      for (let i = 0; i < current_todos.length; i++) {
+        current_todos[i].onclick = function () {
+          this.parentNode.remove();
+        };
       }
     });
 
     // if no todos
   } else {
+    cards.style.display ='none'
+    toggle.style.display = 'none'
     notodos.style.display = "block";
+    
   }
 }
 
 // clear all todo
 function deleteAll() {
-    
-    //cards.firstElementChild can be used.
-    let child = cards.lastElementChild; 
-    while (child) {
-        cards.removeChild(child);
-        child = cards.lastElementChild;
-    }
+  //cards.firstElementChild can be used.
+  let child = cards.lastElementChild;
+  while (child) {
+    cards.removeChild(child);
+    child = cards.lastElementChild;
+    notodos.style.display = "block";
+    clearbut.style.display = "none";
+    cards.style.display ='none'
+    toggle.style.display = 'none'
+  }
+
+ 
 }
-clearbut.onclick = function() {
-    deleteAll();
+clearbut.onclick = function () {
+  deleteAll();
+};
+// update
+const update = (id) => {
+  modal.style.visibility = "visible";
+  todo_id = id;
+  let todo = todoArr.find((todo) => todo.id === id);
+  //modal.children[0].children[2].value=todo.title
+  let todoTitleEl = document.querySelector("#todoTitle");
+  todoTitleEl.value = todo.title;
+  let todoDescriptionEl = document.querySelector("#todoDes");
+  todoDescriptionEl.value = todo.des;
+  let todoDateEl = document.querySelector("#todoDate");
+  todoDateEl.value = todo.date;
+  // modal.childNodes[1]
+  // console.log(modal.childNodes[1].childNodes);
+  //console.log(todo)
+  // console.log(modal.children[0].children[2].value);
+};
+
+modal.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let todoTitleEl = document.querySelector("#todoTitle");
+
+  let todoDescriptionEl = document.querySelector("#todoDes");
+
+  let todoDateEl = document.querySelector("#todoDate");
+
+  // let updatedTodo = todoArr.find((todo) => todo.id === todo_id);
+
+  todoArr.forEach(todo => {
+    if(todo.id === todo_id){
+      todo.title = todoTitleEl.value;
+      todo.des = todoDescriptionEl.value;
+      todo.date = todoDateEl.value;
+    }
+    console.log(todo)
+  })
+  displayCards();
+});
+
+//markcomplete(id){}
+function complete(id){
+  let todo = todoArr.find((todo) => todo.id === id);
+  todo.isComplete = true;
+  console.log(todo)
 }

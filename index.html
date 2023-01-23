@@ -27,11 +27,11 @@
             <div class="modal" style="visibility: hidden;">
                 <form id="modal">
                     <label for="todo">Enter Title:</label><br>
-                    <input type="text" id="todo" name="todo" class="new-task-input" required><br><br>
+                    <input type="text" id="todoTitle" name="todo" class="new-task-input" required><br><br>
                     <label for="des">Enter Description:</label><br>
-                    <input type="text" id="des" name="des" class="new-task-input" required><br><br>
+                    <input type="text" id="todoDes" name="des" class="new-task-input" required><br><br>
                     <label for="date">Enter Date:</label><br>
-                    <input type="date" id="date" name="date" class="new-task-input" required><br><br>
+                    <input type="date" id="todoDate" name="date" class="new-task-input" required><br><br>
                     <div>
                         <button  class="submit" type="submit" id="new-task-submit">Submit</button>
                     </div>
@@ -41,7 +41,11 @@
 
             <h1 class="notodos">You have no todos at the moment</h1>
             <button style="display: none" class="clearbut" >CLear All</button>
-            <div class="list">
+            <div class="toggle" style="display: none;">
+                <button id="completed_tasks">Completed Tasks</button>
+                <button id="incomplete_tasks">InComplete Tasks</button>
+            </div>
+            <div class="list" style="display: none;" >
                
             </div>
         </div>
