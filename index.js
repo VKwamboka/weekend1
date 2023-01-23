@@ -6,11 +6,12 @@ let notodos = document.querySelector(".notodos");
 let clearbut = document.querySelector(".clearbut");
 let modal = document.querySelector(".modal");
 let toggle = document.querySelector(".toggle");
-let completed_tasks = document.querySelector(".completed")
-let incomplete_tasks = document.querySelector(".incomplete_tasks")
-
+let completed_tasks = document.querySelector("#completed_tasks");
+let incomplete_tasks = document.querySelector("#incomplete_tasks");
+let completed = document.querySelector(".completed");
 let todoArr = [];
 let todo_id;
+let date_2 = new Date();
 function todoID() {
   return Math.floor(Math.random() * 2000000);
 }
@@ -27,8 +28,8 @@ form.addEventListener("submit", (e) => {
     title,
     des,
     date,
-    isComplete: false 
-   };
+    isComplete: false,
+  };
   todoArr.push(todo);
   displayCards();
   form.reset();
@@ -39,8 +40,8 @@ function displayCards() {
   if (todoArr.length > 0) {
     notodos.style.display = "none";
     clearbut.style.display = "block";
-    cards.style.display ='block'
-    toggle.style.display = 'block'
+    cards.style.display = "block";
+    toggle.style.display = "block";
     cards.innerHTML = "";
 
     todoArr.forEach((todo) => {
@@ -71,10 +72,9 @@ function displayCards() {
 
     // if no todos
   } else {
-    cards.style.display ='none'
-    toggle.style.display = 'none'
+    cards.style.display = "none";
+    toggle.style.display = "none";
     notodos.style.display = "block";
-    
   }
 }
 
@@ -87,11 +87,9 @@ function deleteAll() {
     child = cards.lastElementChild;
     notodos.style.display = "block";
     clearbut.style.display = "none";
-    cards.style.display ='none'
-    toggle.style.display = 'none'
+    cards.style.display = "none";
+    toggle.style.display = "none";
   }
-
- 
 }
 clearbut.onclick = function () {
   deleteAll();
@@ -108,10 +106,6 @@ const update = (id) => {
   todoDescriptionEl.value = todo.des;
   let todoDateEl = document.querySelector("#todoDate");
   todoDateEl.value = todo.date;
-  // modal.childNodes[1]
-  // console.log(modal.childNodes[1].childNodes);
-  //console.log(todo)
-  // console.log(modal.children[0].children[2].value);
 };
 
 modal.addEventListener("submit", (e) => {
@@ -124,20 +118,65 @@ modal.addEventListener("submit", (e) => {
 
   // let updatedTodo = todoArr.find((todo) => todo.id === todo_id);
 
-  todoArr.forEach(todo => {
-    if(todo.id === todo_id){
+  todoArr.forEach((todo) => {
+    if (todo.id === todo_id) {
       todo.title = todoTitleEl.value;
       todo.des = todoDescriptionEl.value;
       todo.date = todoDateEl.value;
     }
-    console.log(todo)
-  })
+    console.log(todo);
+  });
   displayCards();
 });
 
 //markcomplete(id){}
-function complete(id){
-  let todo = todoArr.find((todo) => todo.id === id);
-  todo.isComplete = true;
-  console.log(todo)
+function complete(id) {
+  // completed_tasks.addEventListener("click",(e) => {
+    todo_id = id;
+      let todo = todoArr.find((todo) => todo.id === todo_id);
+      todo.isComplete = true;
+      console.log(todo);
 }
+completed_tasks.addEventListener("click", (e)=>{
+  // alert("hey")
+  let comp = todoArr.filter((task) => (task.isComplete === true));
+
+  console.log(comp);
+  comp.forEach((todo) => {
+    let contentCard = `         
+              <div class="card-body" style="border: 2px solid purple; margin: 20px; width:25%; background-color:green">                
+                <h1 id="todoTitle">TItle: ${todo.title}</h1>
+                <p id="todoDes"><b>Description:</b> ${todo.des}</p>
+                <p id="todoDate"> <b>Deadline:</b> ${todo.date}</p>
+                <p id="done"> <b>completed on:</b> ${date_2}</p>
+              </div>       
+          `;
+    completed.innerHTML += contentCard;
+    if(comp.length > 0){
+      completed.style.display = "block"
+    }
+  })
+
+})
+
+incomplete_tasks.addEventListener("click", (e)=>{
+  // alert("hey")
+  let comp = todoArr.filter((task) => (task.isComplete === false));
+
+  console.log(comp);
+  comp.forEach((todo) => {
+    let contentCard = `         
+              <div class="card-body" style="border: 2px solid purple; margin: 20px; width:25%; background-color:yellow">                
+                <h1 id="todoTitle">TItle: ${todo.title}</h1>
+                <p id="todoDes"><b>Description:</b> ${todo.des}</p>
+                <p id="todoDate"> <b>Deadline:</b> ${todo.date}</p>
+                
+              </div>       
+          `;
+    completed.innerHTML += contentCard;
+    if(comp.length > 0){
+      completed.style.display = "block"
+    }
+  })
+
+})
