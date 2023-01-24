@@ -12,7 +12,7 @@ let completed = document.querySelector(".completed");
 let incomplete = document.querySelector(".incomplete");
 let todoArr = [];
 let todo_id;
-let date_2 = new Date();
+let dateComp = new Date();
 function todoID() {
   return Math.floor(Math.random() * 2000000);
 }
@@ -52,7 +52,7 @@ function displayCards() {
                   <h1 id="todoTitle">TItle: ${todo.title}</h1>
                   <p id="todoDes"><b>Description:</b> ${todo.des}</p>
                   <p id="todoDate"> <b>Date:</b> ${todo.date}</p>
-                  <button class="delete" id =${todo.id}>Delete</button> 
+                  <button class="delete" onClick = "deleteTodo(${todo.id})">Delete</button> 
                   <button class="update" onclick ="update(${todo.id})">Update</button>                  
                   <button class="done" onclick = "complete(${todo.id})">done</button>                  
 
@@ -63,12 +63,13 @@ function displayCards() {
       cards.innerHTML += contentCard;
 
       // delete a todo
-      let current_todos = document.querySelectorAll(".delete");
-      for (let i = 0; i < current_todos.length; i++) {
-        current_todos[i].onclick = function () {
-          this.parentNode.remove();
-        };
-      }
+      // let current_todos = document.querySelectorAll(".delete");
+      // for (let i = 0; i < current_todos.length; i++) {
+      //   current_todos[i].onclick = function () {
+      //     this.parentNode.remove();
+      //   };
+      // }
+  
     });
 
     // if no todos
@@ -78,14 +79,22 @@ function displayCards() {
     notodos.style.display = "block";
   }
 }
+// 
+const deleteTodo = (id) => {
+  todoArr = todoArr.filter(todo => todo.id !== id);
+  displayCards();
+}
 
 // clear all todo
 function deleteAll() {
   //cards.firstElementChild can be used.
   let child = cards.lastElementChild;
+  todoArr = []
   while (child) {
+    
     cards.removeChild(child);
     child = cards.lastElementChild;
+    incomplete.innerHTML=''
     notodos.style.display = "block";
     clearbut.style.display = "none";
     cards.style.display = "none";
@@ -139,6 +148,7 @@ function complete(id) {
       console.log(todo);
 }
 completed_tasks.addEventListener("click", (e)=>{
+  incomplete.innerHTML=''
   // alert("hey")
   let comp = todoArr.filter((task) => (task.isComplete === true));
 
@@ -149,35 +159,49 @@ completed_tasks.addEventListener("click", (e)=>{
                 <h1 id="todoTitle">TItle: ${todo.title}</h1>
                 <p id="todoDes"><b>Description:</b> ${todo.des}</p>
                 <p id="todoDate"> <b>Deadline:</b> ${todo.date}</p>
-                <p id="done"> <b>completed on:</b> ${date_2}</p>
+                <p id="done"> <b>completed on:</b> ${dateComp}</p>
               </div>       
           `;
-    completed.innerHTML += contentCard;
+    incomplete.innerHTML += contentCard;
     if(comp.length > 0){
-      completed.style.display = "block"
+      incomplete.style.display = "block"
     }
   })
 
 })
 
+// incomplete tasks
 incomplete_tasks.addEventListener("click", (e)=>{
   // alert("hey")
+  incomplete.innerHTML=''
   let comp = todoArr.filter((task) => (task.isComplete === false));
-
-  console.log(comp);
   comp.forEach((todo) => {
+    // time calc
+    let date_1 = new Date(todo.date);
+    let date_2 = new Date();
+  
+    const days = (date_1, date_2) =>{
+      let difference = date_1.getTime() - date_2.getTime();
+      let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
+      return TotalDays;
+    }
+    console.log(days(date_1, date_2) +" days due");
+    
     let contentCard = `         
               <div class="card-body" style="border: 2px solid purple; margin: 20px; width:25%; background-color:yellow">                
                 <h1 id="todoTitle">TItle: ${todo.title}</h1>
                 <p id="todoDes"><b>Description:</b> ${todo.des}</p>
                 <p id="todoDate"> <b>Deadline:</b> ${todo.date}</p>
+                ${days(date_1, date_2)-1 >= 0 ? `<p id="due" style ="display:block"> <b>Due</b> ${days(date_1, date_2)} days due</p>` : `<p id="overdue" style ="display:block"> <b>Due</b> ${days(date_1, date_2)} days overdue</p>`}
                 
               </div>       
           `;
-    completed.innerHTML += contentCard;
+         
+    incomplete.innerHTML += contentCard;
     if(comp.length > 0){
-      completed.style.display = "block"
+      incomplete.style.display = "block"
     }
+   
   })
 
 })

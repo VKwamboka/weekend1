@@ -1,7 +1,22 @@
+:root {
+	--dark: #374151;
+	--darker: #1F2937;
+	--darkest: #111827;
+	--grey: #6B7280;
+	--pink: #EC4899;
+	--purple: #8B5CF6;
+	--light: #EEE;
+}
+
+* {
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Fira sans", sans-serif;
+}
 .list{
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 10px;
     border: 2px solid orchid;
     margin: 20px;
 }
