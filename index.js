@@ -38,6 +38,10 @@ form.addEventListener("submit", (e) => {
   form.reset();
 });
 
+const randColor = () =>  {
+  return "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
+}
+
 // displaying cards
 function displayCards() {
   if (todoArr.length > 0) {
@@ -50,28 +54,23 @@ function displayCards() {
     todoArr.forEach((todo) => {
       // Construct card content
       let contentCard = `         
-                <div class="card-body" style="border: 2px solid purple; margin: 20px; width:25%">                
-                  <h1 id="todoTitle">TItle: ${todo.title}</h1>
-                  <p id="todoDes"><b>Description:</b> ${todo.des}</p>
-                  <p id="todoDate"> <b>Date:</b> ${todo.date}</p>
-                  <button class="delete" onClick = "deleteTodo(${todo.id})">Delete</button> 
-                  <button class="update" onclick ="update(${todo.id})">Update</button>                  
-                  <button class="done" onclick = "complete(${todo.id})">done</button>                  
+                <div class="card-body" style=" margin: 20px; width:28%; height:300px; background-color:${randColor()};padding:20px;display:flex;flex-direction:column;gap:10px;flex-wrap:wrap">                
+                  <h1 id="todoTitle">TItle: ${todo.title}</h1> <br>
+                  <p id="todoDes"><b>Description:</b> ${todo.des}</p> <br>
+                  <p id="todoDate"> <b>Due:</b> ${todo.date}</p> <br>
+                  <div style="display:flex;justfy-content:center">
+                  <button class="delete" onClick = "deleteTodo(${todo.id})" style="padding:5px">Delete</button>  
+                  <button class="update" onclick ="update(${todo.id})" style="padding:5px">Update</button>                  
+                  <button class="done" onclick = "complete(${todo.id})" style="padding:5px">done</button> 
+                  </div>              
 
                 </div>       
             `;
-
       // Append newyly created card element to the container
       cards.innerHTML += contentCard;
-
-      // delete a todo
-      // let current_todos = document.querySelectorAll(".delete");
-      // for (let i = 0; i < current_todos.length; i++) {
-      //   current_todos[i].onclick = function () {
-      //     this.parentNode.remove();
-      //   };
-      // }
-  
+      // let p = document.createElement('p'); p.innerText = "My Tasks"
+      // cards.appendChild(p)
+      cards.style.display="flex"
     });
 
     // if no todos
@@ -150,7 +149,7 @@ function complete(id) {
       console.log(todo);
 }
 completed_tasks.addEventListener("click", (e)=>{
-  incomplete.innerHTML=''
+  cards.innerHTML=''
   
   let comp = todoArr.filter((task) => (task.isComplete === true));
 if(comp.length > 0 ){
@@ -177,7 +176,7 @@ if(comp.length > 0 ){
 
               </div>       
           `;
-    incomplete.innerHTML += contentCard;
+    cards.innerHTML += contentCard;
     if(comp.length > 0){
       incomplete.style.display = "block"
     }
@@ -209,7 +208,7 @@ incomplete_tasks.addEventListener("click", (e)=>{
                 <h1 id="todoTitle">TItle: ${todo.title}</h1>
                 <p id="todoDes"><b>Description:</b> ${todo.des}</p>
                 <p id="todoDate"> <b>Deadline:</b> ${todo.date}</p>
-                ${days(date_1, date_2)-1 >= 0 ? `<p id="due" style ="display:block"> <b>Due</b> ${Math.abs(days(date_1, date_2))} day(s) due</p>` : `<p id="overdue" style ="display:block"> <b>Due</b> ${days(date_1, date_2)} day(s) overdue</p>`}
+                ${days(date_1, date_2)-1 >= 0 ? `<p id="due" style ="display:block"> <b>Due</b> ${Math.abs(days(date_1, date_2))} day(s) due</p>` : `<p id="overdue" style ="display:block"> <b>Due</b> ${Math.abs(days(date_1, date_2))} day(s) overdue</p>`}
                 
               </div>       
           `;

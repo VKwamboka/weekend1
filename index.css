@@ -13,20 +13,55 @@
 	box-sizing: border-box;
 	font-family: "Fira sans", sans-serif;
 }
-/* body {
+.form{
+    /* color: #FFF;
+	background-color: var(--dark); */
+}
+.new-task-input{
+    flex: 1 1 0%;
+	background-color: var(--darker);
+	padding: 1rem;
+	border-radius: 1rem;
+	margin-right: 1rem;
+	color: var(--light);
+	font-size: 1.25rem;
+}
+#new-task-submit {
+    border: none;
+	color: var(--pink);
+	font-size: 1.25rem;
+	font-weight: 700;
+	background-image: linear-gradient(to right, var(--pink), var(--purple));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	cursor: pointer;
+	transition: 0.4s;
+}
+body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
 	color: #FFF;
 	background-color: var(--dark);
-} */
-.list{
+}
+.todo-list{
     display: flex;
-    flex-direction: row;
+    gap: 0px;
+}
+.list{
+    /* display: flex; */
+    /* flex-direction: row; */
     flex-wrap: wrap;
-    gap: 10px;
-    border: 2px solid orchid;
-    margin: 20px;
+    gap: 0px;
+    color: black;
+    /* justify-content: space-around; */
+    /* border: 2px solid orchid; */
+    width: 70%;
+    margin-top: 50px;
+    
+    /* margin-left: 30%; */
+    /* top: 0; */
+    /* margin: 100px; */
 }
 .cardbody{
     border: 2px solid orchid;
@@ -34,11 +69,12 @@
 .form{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   /* align-items: center; */
   gap: 10px;
-  width: 40%;
-  margin-left: 30vw;
+  width: 28%;
+  margin-left: 1vw;
+  margin-top: 50px;
   padding: 10px;
   border: 2px solid blueviolet;
 }
@@ -52,6 +88,7 @@
     background-color: orchid;
 }
 .toggle{
+   
     display: flex;
-    gap: 20%;
+    gap: 50px;
 }
