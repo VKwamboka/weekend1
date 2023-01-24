@@ -137,11 +137,11 @@ modal.addEventListener("submit", (e) => {
     console.log(todo);
   });
   displayCards();
+  modal.style.visibility = "hidden"
 });
 
 //markcomplete(id){}
 function complete(id) {
-  // completed_tasks.addEventListener("click",(e) => {
     todo_id = id;
       let todo = todoArr.find((todo) => todo.id === todo_id);
       todo.isComplete = true;
@@ -149,7 +149,6 @@ function complete(id) {
 }
 completed_tasks.addEventListener("click", (e)=>{
   incomplete.innerHTML=''
-  // alert("hey")
   let comp = todoArr.filter((task) => (task.isComplete === true));
 
   console.log(comp);
@@ -172,11 +171,9 @@ completed_tasks.addEventListener("click", (e)=>{
 
 // incomplete tasks
 incomplete_tasks.addEventListener("click", (e)=>{
-  // alert("hey")
   incomplete.innerHTML=''
   let comp = todoArr.filter((task) => (task.isComplete === false));
   comp.forEach((todo) => {
-    // time calc
     let date_1 = new Date(todo.date);
     let date_2 = new Date();
   
