@@ -149,16 +149,28 @@ function complete(id) {
 }
 completed_tasks.addEventListener("click", (e)=>{
   incomplete.innerHTML=''
+  
   let comp = todoArr.filter((task) => (task.isComplete === true));
 if(comp.length > 0 ){
-  console.log(comp);
+ 
   comp.forEach((todo) => {
+    let date_1 = new Date(todo.date);
+    let date_2 = dateComp;
+  
+    const days = (date_1, date_2) =>{
+      let difference = date_1.getTime() - date_2.getTime();
+      let TotalDays =  Math.ceil(difference / (1000 * 3600 * 24));
+      return TotalDays;
+    }
+    console.log(days(date_1, date_2) +" days due");
     let contentCard = `         
               <div class="card-body" style="border: 2px solid purple; margin: 20px; width:25%; background-color:green">                
                 <h1 id="todoTitle">TItle: ${todo.title}</h1>
                 <p id="todoDes"><b>Description:</b> ${todo.des}</p>
                 <p id="todoDate"> <b>Deadline:</b> ${todo.date}</p>
                 <p id="done"> <b>completed on:</b> ${dateComp}</p>
+                ${days(date_1, date_2) >= 0 ? `<p id="due" style ="display:block"> <b>Completed  ${Math.abs(days(date_1, date_2))} day(s) before deadline</b></p>` : `<p id="overdue" style ="display:block"> <b>Completed task ${Math.abs(days(date_1, date_2))} day(s) late</b> </p>`}
+
               </div>       
           `;
     incomplete.innerHTML += contentCard;
@@ -193,7 +205,7 @@ incomplete_tasks.addEventListener("click", (e)=>{
                 <h1 id="todoTitle">TItle: ${todo.title}</h1>
                 <p id="todoDes"><b>Description:</b> ${todo.des}</p>
                 <p id="todoDate"> <b>Deadline:</b> ${todo.date}</p>
-                ${days(date_1, date_2)-1 >= 0 ? `<p id="due" style ="display:block"> <b>Due</b> ${days(date_1, date_2)} days due</p>` : `<p id="overdue" style ="display:block"> <b>Due</b> ${days(date_1, date_2)} days overdue</p>`}
+                ${days(date_1, date_2)-1 >= 0 ? `<p id="due" style ="display:block"> <b>Due</b> ${Math.abs(days(date_1, date_2))} days due</p>` : `<p id="overdue" style ="display:block"> <b>Due</b> ${days(date_1, date_2)} days overdue</p>`}
                 
               </div>       
           `;
