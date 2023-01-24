@@ -150,7 +150,7 @@ function complete(id) {
 completed_tasks.addEventListener("click", (e)=>{
   incomplete.innerHTML=''
   let comp = todoArr.filter((task) => (task.isComplete === true));
-
+if(comp.length > 0 ){
   console.log(comp);
   comp.forEach((todo) => {
     let contentCard = `         
@@ -166,13 +166,17 @@ completed_tasks.addEventListener("click", (e)=>{
       incomplete.style.display = "block"
     }
   })
-
+}
+else{
+  alert("You don't have any complete tasks")
+}
 })
 
 // incomplete tasks
 incomplete_tasks.addEventListener("click", (e)=>{
   incomplete.innerHTML=''
   let comp = todoArr.filter((task) => (task.isComplete === false));
+  if(comp.length > 0){
   comp.forEach((todo) => {
     let date_1 = new Date(todo.date);
     let date_2 = new Date();
@@ -200,5 +204,9 @@ incomplete_tasks.addEventListener("click", (e)=>{
     }
    
   })
+}
+else{
+  alert("You have no incomplete tasks")
+}
 
 })
