@@ -209,7 +209,7 @@ incomplete_tasks.addEventListener("click", (e)=>{
                 <h1 id="todoTitle">TItle: ${todo.title}</h1>
                 <p id="todoDes"><b>Description:</b> ${todo.des}</p>
                 <p id="todoDate"> <b>Deadline:</b> ${todo.date}</p>
-                ${days(date_1, date_2)-1 >= 0 ? `<p id="due" style ="display:block"> <b>Due</b> ${Math.abs(days(date_1, date_2))} days due</p>` : `<p id="overdue" style ="display:block"> <b>Due</b> ${days(date_1, date_2)} days overdue</p>`}
+                ${days(date_1, date_2)-1 >= 0 ? `<p id="due" style ="display:block"> <b>Due</b> ${Math.abs(days(date_1, date_2))} day(s) due</p>` : `<p id="overdue" style ="display:block"> <b>Due</b> ${days(date_1, date_2)} day(s) overdue</p>`}
                 
               </div>       
           `;
