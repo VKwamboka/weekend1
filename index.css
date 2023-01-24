@@ -1,4 +1,4 @@
-:root {
+/* :root {
 	--dark: #374151;
 	--darker: #1F2937;
 	--darkest: #111827;
@@ -12,13 +12,14 @@
 	margin: 0;
 	box-sizing: border-box;
 	font-family: "Fira sans", sans-serif;
-}
+} */
 .list{
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
     border: 2px solid orchid;
-    margin: 20px;
+    /* margin: 20px; */
 }
 .cardbody{
     border: 2px solid orchid;

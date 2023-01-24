@@ -106,7 +106,7 @@ clearbut.onclick = function () {
 };
 // update
 const update = (id) => {
-  modal.style.visibility = "visible";
+  modal.style.display = "block";
   todo_id = id;
   let todo = todoArr.find((todo) => todo.id === id);
   //modal.children[0].children[2].value=todo.title
@@ -137,7 +137,7 @@ modal.addEventListener("submit", (e) => {
     console.log(todo);
   });
   displayCards();
-  modal.style.visibility = "hidden"
+  modal.style.display = "none"
 });
 
 //markcomplete(id){}
@@ -166,6 +166,7 @@ if(comp.length > 0 ){
     let contentCard = `         
               <div class="card-body" style="border: 2px solid purple; margin: 20px; width:25%; background-color:green">                
                 <h1 id="todoTitle">TItle: ${todo.title}</h1>
+                <hr>
                 <p id="todoDes"><b>Description:</b> ${todo.des}</p>
                 <p id="todoDate"> <b>Deadline:</b> ${todo.date}</p>
                 <p id="done"> <b>completed on:</b> ${dateComp}</p>
