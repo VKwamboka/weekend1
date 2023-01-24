@@ -10,6 +10,8 @@ let completed_tasks = document.querySelector("#completed_tasks");
 let incomplete_tasks = document.querySelector("#incomplete_tasks");
 let completed = document.querySelector(".completed");
 let incomplete = document.querySelector(".incomplete");
+let incompTasks = document.querySelector(".incompTasks");
+let compTasks = document.querySelector(".compTasks")
 let todoArr = [];
 let todo_id;
 let dateComp = new Date();
@@ -152,6 +154,7 @@ completed_tasks.addEventListener("click", (e)=>{
   
   let comp = todoArr.filter((task) => (task.isComplete === true));
 if(comp.length > 0 ){
+  // compTasks.style.display = "block"
  
   comp.forEach((todo) => {
     let date_1 = new Date(todo.date);
