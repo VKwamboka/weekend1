@@ -111,6 +111,7 @@ clearbut.onclick = function () {
 // update
 const update = (id) => {
   modal.style.display = "block";
+  form.style.display = "none";
   todo_id = id;
   let todo = todoArr.find((todo) => todo.id === id);
   //modal.children[0].children[2].value=todo.title
@@ -142,6 +143,7 @@ modal.addEventListener("submit", (e) => {
   });
   displayCards();
   modal.style.display = "none"
+  form.style.display = "block";
 });
 
 //markcomplete(id){}
