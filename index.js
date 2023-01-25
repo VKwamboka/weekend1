@@ -63,7 +63,7 @@ function displayCards() {
                   <div style="display:flex;justfy-content:center">
                   <button class="delete" onClick = "deleteTodo(${todo.id})" style="padding:5px">Delete</button>  
                   <button class="update" onclick ="update(${todo.id})" style="padding:5px">Update</button>                  
-                  <button class="done" onclick = "complete(${todo.id})" style="padding:5px">done</button> 
+                  <button class="done" id ="done" onclick = "complete(${todo.id})" style="padding:5px">done</button> 
                   </div>              
 
                 </div>       
@@ -73,6 +73,7 @@ function displayCards() {
       // let p = document.createElement('p'); p.innerText = "My Tasks"
       // cards.appendChild(p)
       cards.style.display="flex"
+      
     });
 
     // if no todos
