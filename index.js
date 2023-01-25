@@ -12,6 +12,7 @@ let completed = document.querySelector(".completed");
 let incomplete = document.querySelector(".incomplete");
 let incompTasks = document.querySelector(".incompTasks");
 let compTasks = document.querySelector(".compTasks")
+let allTasks = document.querySelector("#all-tasks")
 let todoArr = [];
 let todo_id;
 let dateComp = new Date();
@@ -49,6 +50,7 @@ function displayCards() {
     clearbut.style.display = "block";
     cards.style.display = "block";
     toggle.style.display = "block";
+    toggle.style.display = "flex"
     cards.innerHTML = "";
 
     todoArr.forEach((todo) => {
@@ -104,6 +106,7 @@ function deleteAll() {
 }
 clearbut.onclick = function () {
   deleteAll();
+  cards.innerHTML = ""
 };
 // update
 const update = (id) => {
@@ -166,7 +169,7 @@ if(comp.length > 0 ){
     }
     console.log(days(date_1, date_2) +" days due");
     let contentCard = `         
-              <div class="card-body" style="border: 2px solid purple; margin: 20px; width:25%; background-color:green">                
+    <div class="card-body" style=" margin: 20px; width:28%; height:300px; background-color:${randColor()};padding:20px;display:flex;flex-direction:column;gap:10px;flex-wrap:wrap">                             
                 <h1 id="todoTitle">TItle: ${todo.title}</h1>
                 <hr>
                 <p id="todoDes"><b>Description:</b> ${todo.des}</p>
@@ -184,12 +187,18 @@ if(comp.length > 0 ){
 }
 else{
   alert("You don't have any complete tasks")
+  displayCards()
 }
+})
+// all tasks
+allTasks.addEventListener("click", (e)=>{
+  incomplete.innerHTML = ""
+  displayCards()
 })
 
 // incomplete tasks
 incomplete_tasks.addEventListener("click", (e)=>{
-  incomplete.innerHTML=''
+  cards.innerHTML=''
   let comp = todoArr.filter((task) => (task.isComplete === false));
   if(comp.length > 0){
   comp.forEach((todo) => {
@@ -204,7 +213,7 @@ incomplete_tasks.addEventListener("click", (e)=>{
     console.log(days(date_1, date_2) +" days due");
     
     let contentCard = `         
-              <div class="card-body" style="border: 2px solid purple; margin: 20px; width:25%; background-color:yellow">                
+    <div class="card-body" style=" margin: 20px; width:28%; height:300px; background-color:${randColor()};padding:20px;display:flex;flex-direction:column;gap:10px;flex-wrap:wrap">                               
                 <h1 id="todoTitle">TItle: ${todo.title}</h1>
                 <p id="todoDes"><b>Description:</b> ${todo.des}</p>
                 <p id="todoDate"> <b>Deadline:</b> ${todo.date}</p>
@@ -213,7 +222,7 @@ incomplete_tasks.addEventListener("click", (e)=>{
               </div>       
           `;
          
-    incomplete.innerHTML += contentCard;
+    cards.innerHTML += contentCard;
     if(comp.length > 0){
       incomplete.style.display = "block"
     }
@@ -222,6 +231,7 @@ incomplete_tasks.addEventListener("click", (e)=>{
 }
 else{
   alert("You have no incomplete tasks")
+  displayCards()
 }
 
 })

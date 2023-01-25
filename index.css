@@ -63,7 +63,7 @@ body {
     color: black;
     /* justify-content: space-around; */
     /* border: 2px solid orchid; */
-    margin-top: 50px;
+    margin-top: 30px;
     
     /* margin-left: 30%; */
     /* top: 0; */
@@ -80,7 +80,7 @@ body {
   gap: 10px;
   width: 28%;
   margin-left: 1vw;
-  margin-top: 50px;
+  margin-top: 10px;
   padding: 10px;
   border: 2px solid blueviolet;
 }
@@ -88,13 +88,15 @@ body {
     text-align: center;
 }
 .clearbut{
-    margin-left: 47vw;
-    width: 100px;
+    /* margin-left: 47vw; */
+    width: 180px;
+    font-weight: bold;
     padding: 10px;
     background-color: orchid;
 }
 .toggle{
-   
-    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
     gap: 50px;
 }
