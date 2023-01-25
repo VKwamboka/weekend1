@@ -34,7 +34,7 @@ form.addEventListener("submit", (e) => {
     date,
     isComplete: false,
   };
-  todoArr.push(todo);
+  todoArr.unshift(todo);
   displayCards();
   form.reset();
 });
@@ -241,3 +241,11 @@ else{
 }
 
 })
+
+// function validateForm() {
+//   let x = document.forms["myForm"]["fname"].value;
+//   if (x == "") {
+//     alert("Name must be filled out");
+//     return false;
+//   }
+// }
