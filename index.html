@@ -11,21 +11,22 @@
         <hr>
 
         <div class="todo">
+           
             <div class="todo-list">
-                <form class="form" >
+                <form class="form">
                     <label for="todo">Enter Title:</label><br>
-                    <input type="text" id="todo" name="todo" class="new-task-input" placeholder="What do you have planned?"  required ><br><br>
+                    <input type="text" id="todo" name="todo" class="new-task-input" placeholder="What do you have planned?" required><br><br>
                     <label for="des">Enter Description:</label><br>
-                    <input type="text" id="des" name="des" class="new-task-input" placeholder="Task Description?"  required><br><br>
+                    <input type="text" id="des" name="des" class="new-task-input" placeholder="Task Description?" required><br><br>
                     <label for="date">Enter Date:</label><br>
-                    <input type="date" id="date" name="date" class="new-task-input"  required><br><br>
+                    <input type="date" id="date" name="date" class="new-task-input" required><br><br>
                     <div>
-                        <button  class="submit" type="submit" id="new-task-submit" >Submit</button>
+                        <button class="submit" type="submit" id="new-task-submit">Submit</button>
                     </div>
-                    
-                    
+
+
                 </form>
-    
+
                 <div class="modal" style="display: none;">
                     <form id="modal">
                         <label for="todo">Enter Title:</label><br>
@@ -35,35 +36,40 @@
                         <label for="date">Enter Date:</label><br>
                         <input type="date" id="todoDate" name="date" class="new-task-input" required><br><br>
                         <div>
-                            <button  class="submit" type="submit" id="new-task-submit">Submit</button>
+                            <button class="submit" type="submit" id="new-task-submit">Submit</button>
                         </div>
                     </form>
                 </div>
                 <br>
-                <div class="list" style="display: none;" >
-                    <h3 id="mytasks">My Tasks</h3>
-                    <h3 id="mycomplete">My Tasks</h3>
-                    <h3 id="myincomplete">My Tasks</h3>
-    
-                   
-                </div>
-            </div>
-           
+                <div class="all-todo">
+                    <div class="todo-nav">
 
-            <h1 class="notodos">You have no todos at the moment</h1>
-            <button style="display: none" class="clearbut" >CLear All</button>
-            <div class="toggle" style="display: none;">
-                <button id="completed_tasks">Completed Tasks</button>
-                <button id="incomplete_tasks">InComplete Tasks</button>
+                        <h1 class="notodos">You have no todos at the moment</h1>
+                        <button style="display: none" class="clearbut">CLear All</button>
+                        <div class="toggle" style="display: none;">
+                            <button id="completed_tasks">Completed Tasks</button>
+                            <button id="incomplete_tasks">InComplete Tasks</button>
+                        </div>
+        
+                        <div class="completed" style="display: none;"></div>
+                        <div class="incomplete" style="display: none;">
+                            <h2 style="display: none;" class="incompTasks">My Incomplete Tasks</h2>
+                            <h2 style="display: none;" class="compTasks">My Complete Tasks</h2>
+                        </div>
+                    </div>
+
+                    <div class="list" style="display: none;">
+                        <h3 id="mytasks">My Tasks</h3>
+                        <h3 id="mycomplete">My Tasks</h3>
+                        <h3 id="myincomplete">My Tasks</h3>
+    
+    
+                    </div>
+                </div>
+               
             </div>
-           
-            <div class="completed" style="display: none;">
-                
-            </div>
-            <div class="incomplete" style="display: none;">
-                <h2 style="display: none;" class="incompTasks">My Incomplete Tasks</h2>
-                <h2 style="display: none;" class="compTasks">My Complete Tasks</h2>
-            </div>
+
+
         </div>
 
 

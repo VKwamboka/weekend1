@@ -48,15 +48,21 @@ body {
     display: flex;
     gap: 0px;
 }
+.all-todo{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
 .list{
     /* display: flex; */
     /* flex-direction: row; */
+    width: 100%;
     flex-wrap: wrap;
     gap: 0px;
     color: black;
     /* justify-content: space-around; */
     /* border: 2px solid orchid; */
-    width: 70%;
     margin-top: 50px;
     
     /* margin-left: 30%; */
