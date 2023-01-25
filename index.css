@@ -13,10 +13,7 @@
 	box-sizing: border-box;
 	font-family: "Fira sans", sans-serif;
 }
-.form{
-    /* color: #FFF;
-	background-color: var(--dark); */
-}
+
 .new-task-input{
     flex: 1 1 0%;
 	background-color: var(--darker);
@@ -63,7 +60,7 @@ body {
     color: black;
     /* justify-content: space-around; */
     /* border: 2px solid orchid; */
-    margin-top: 30px;
+    margin-top: 3nod0px;
     
     /* margin-left: 30%; */
     /* top: 0; */
