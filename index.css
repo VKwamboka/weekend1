@@ -68,6 +68,7 @@ body {
 }
 .cardbody{
     border: 2px solid orchid;
+    
 }
 .form, .modal{
   /* display: flex; */
@@ -82,12 +83,16 @@ body {
 .notodos{
     text-align: center;
 }
-.clearbut{
+.clearbut, #completed_tasks, #incomplete_tasks, #all-tasks{
     /* margin-left: 47vw; */
     width: 180px;
     font-weight: bold;
     padding: 10px;
-    background-color: orchid;
+    background-color: var(--dark);
+   color: linear-gradient(to right, var(--pink), var(--purple));
+
+    
+    /* background-color: orchid; */
 }
 .toggle{
     margin-top: 10px;

@@ -93,11 +93,13 @@ function deleteAll() {
   //cards.firstElementChild can be used.
   let child = cards.lastElementChild;
   todoArr = []
+ 
   while (child) {
     
     cards.removeChild(child);
     child = cards.lastElementChild;
     incomplete.innerHTML=''
+    cards.innerHTML = ""
     notodos.style.display = "block";
     clearbut.style.display = "none";
     cards.style.display = "none";
@@ -106,7 +108,7 @@ function deleteAll() {
 }
 clearbut.onclick = function () {
   deleteAll();
-  cards.innerHTML = ""
+ 
 };
 // update
 const update = (id) => {
@@ -154,6 +156,7 @@ function complete(id) {
       console.log(todo);
 }
 completed_tasks.addEventListener("click", (e)=>{
+  e.preventDefault()
   cards.innerHTML=''
   
   let comp = todoArr.filter((task) => (task.isComplete === true));
