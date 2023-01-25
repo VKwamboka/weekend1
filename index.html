@@ -14,11 +14,11 @@
            
             <div class="todo-list">
                 <form class="form">
-                    <label for="todo">Enter Title:</label><br>
+                    <label for="todo">Enter Title:</label><br><br>
                     <input type="text" id="todo" name="todo" class="new-task-input" placeholder="What do you have planned?" required><br><br>
-                    <label for="des">Enter Description:</label><br>
+                    <label for="des">Enter Description:</label><br><br>
                     <input type="text" id="des" name="des" class="new-task-input" placeholder="Task Description?" required><br><br>
-                    <label for="date">Enter Date:</label><br>
+                    <label for="date">Enter Date:</label><br><br>
                     <input type="date" id="date" name="date" class="new-task-input" required><br><br>
                     <div>
                         <button class="submit" type="submit" id="new-task-submit">Submit</button>
@@ -29,14 +29,14 @@
 
                 <div class="modal" style="display: none;">
                     <form id="modal">
-                        <label for="todo">Enter Title:</label><br>
+                        <label for="todo">Enter Title:</label><br><br>
                         <input type="text" id="todoTitle" name="todo" class="new-task-input" required><br><br>
-                        <label for="des">Enter Description:</label><br>
+                        <label for="des">Enter Description:</label><br><br>
                         <input type="text" id="todoDes" name="des" class="new-task-input" required><br><br>
-                        <label for="date">Enter Date:</label><br>
+                        <label for="date">Enter Date:</label><br><br>
                         <input type="date" id="todoDate" name="date" class="new-task-input" required><br><br>
                         <div>
-                            <button class="submit" type="submit" id="new-task-submit">Submit</button>
+                            <button class="submit" type="submit" id="new-task-submit">Save</button>
                         </div>
                     </form>
                 </div>
@@ -44,7 +44,7 @@
                 <div class="all-todo">
                     <div class="todo-nav">
 
-                        <h1 class="notodos">You have no todos at the moment</h1>
+                        <h1 class="notodos" style="margin-top: 100px;">You have no todos at the moment</h1>
                         
                         <div class="toggle" style="display: none;">
                             <button class="clearbut" id="completed_tasks">Completed Tasks</button>

@@ -69,12 +69,10 @@ body {
 .cardbody{
     border: 2px solid orchid;
 }
-.form{
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
-  gap: 10px;
+.form, .modal{
+  /* display: flex; */
+  /* flex-direction: column;
+  gap: 10px; */
   width: 28%;
   margin-left: 1vw;
   margin-top: 10px;
